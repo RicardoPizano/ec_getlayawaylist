@@ -57,7 +57,7 @@ $ pip3 install -r requirements.tx
 #### Ejecutar
 
 ``` bash 
-$ python3 main.py
+$ uvicorn main:app --host 0.0.0.0
 ``` 
 
 ### Docker
@@ -65,13 +65,16 @@ $ python3 main.py
 #### Descargar imagen
 
 ``` bash
-$ docker pull ec_getlayawaylist:latest
+$ docker pull rikymon/ec_getlayawaylist:latest
 ```
 
 #### Crear contenedor
 
 ``` bash
-$ docker run -d -p ${puerto}:80 --name container_ec_getlayawaylist ec_getlayawaylist 
+# ${puerto} valor del puerto en la pc local (recomendado 8004)
+# ${ec_msusers_url} url del projecto ms_users corriendo (default http://localhost:8002)(recomendada http://172.17.0.1:8002)
+$ docker run -d -p ${puerto}:80 -e USERS_BASE_URL=${ec_msusers_url} --name container_ec_getlayawaylist rikymon/ec_getlayawaylist 
+
 ```
 
 ## Edpoints

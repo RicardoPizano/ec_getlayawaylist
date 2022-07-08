@@ -8,7 +8,7 @@ RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 COPY . .
 
 ENV MONGO_URL=""
-ENV USERS_BASE_URL=""
+ENV USERS_BASE_URL=http://localhost:8002
 
 EXPOSE 80
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
